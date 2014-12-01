@@ -1,6 +1,7 @@
 function [] = mat2matrix()
 % this function is used to change the CM.mat to the text filetype .
 % you just need to indentify the dir for the program.
+%Usage: [] = mat2matrix()
 pname = uigetdir();
 old_path = pwd;
 cd(pname)

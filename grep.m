@@ -1,6 +1,9 @@
 function mycell = grep(str)
 % This function imitates the grep function of Linux,
 % used to catch the specified files with the str pattern.
+%Usage: mycell = grep(str)
+% str: pattern
+% mycell: output names list
 mylist = ls;
 mylist(isspace(mylist)) = ' ';
 
