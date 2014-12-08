@@ -2,3 +2,4 @@
 1、将需要作groupwise connectome analysis的两组.mat文件放置到两个文件夹下。
 2、运行mat2struct.m函数生成一个包含connection matrics的结构体。
 3、将上一步生成的结构体输入到snr_mat.m生成signal-to-noise(SNR)connection matrix，然后进行分析。
+4、当生成SNR矩阵之后，我们需要确定他们的backbone连接，采用size2cost.m函数确定cost值，将两组进行融合。
