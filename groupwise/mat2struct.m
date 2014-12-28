@@ -12,8 +12,9 @@ pname = uigetdir();
 old_path = pwd;
 cd(pname)
 display(['current working directory is :' pname]);
-mylist = grep('.mat');
-
+mystruc = dir('*.mat');
+mylist = struct2cell(mystruc);
+mylist = mylist(1,:);
 W_series = struct('W',[]);
 for aa = 1:numel(mylist)
     temp = load(mylist{aa});
