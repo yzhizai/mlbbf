@@ -1,12 +1,12 @@
 function [] = prepCM(nof,delmt,prefix)
-%This function is used to process the CM from ExploreDTI
-%
+%This function is used to process the weighted/unweighted CM from ExploreDTI
+%mainly to elimite diagonal elements and NaN elements
 %Usage: [] = prepCM(nof,delmt,prefix)
 %
 %nof: the number of field of original files' name
 %delmt: the delimiter used to split the files' name
 %prefix: ==> 'CON' or 'PAT'
-pname = uigetdir('','Choose a folder to save the new CM files...');
+pname = uigetdir('','Choose a folder to process CM files...');
 old_path = pwd;
 cd(pname)
 display(['current working directory is :' pname]);

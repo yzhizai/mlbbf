@@ -1,5 +1,6 @@
 function W_series = mat2struct()
 % This function is used to convert the mat files to a struct.
+% This function is executed after prepCM.m function.
 % which being followed by snr_mat function.
 %
 %Usage: W_series = mat2struct

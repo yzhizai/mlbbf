@@ -31,7 +31,7 @@ for bb = 0.5:-0.01:0.1
 end
 plot(0.5:-0.01:0.1,y_aa,'ko-','MarkerSize',10,'MarkerFaceColor',[1 0 0],'LineWidth',2)
 plot(0.5:-0.01:0.1,y_bb,'k^-','MarkerSize',10,'MarkerFaceColor',[0 0 1],'LineWidth',2)
-lin_x = [0.1,0.26,0.26];
+lin_x = [0.1,0.3,0.3];
 lin_y = [90 90 75];
 line('XData',lin_x,'YData',lin_y,'LineStyle','-.','LineWidth',2,'Color',[0 1 0])
 % text(0.27,91,'X : 0.26,Y : 90')
