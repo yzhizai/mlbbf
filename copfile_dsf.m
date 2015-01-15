@@ -1,5 +1,5 @@
 function [] = copfile_dsf(filetype,destination)
-
+%this function is used to copy subfolder's specified files.
 % destination = 'G:\MXT_DTI\control_sum'; %定义目标文件夹
 % filetype = '*.nii';         %定义要操作的文件格式
 maindir = pwd;
