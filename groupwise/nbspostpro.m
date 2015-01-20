@@ -1,12 +1,14 @@
-function  [] = nbspostpro()
+function  [] = nbspostpro(subnet)
 %This function is used after NBS program used to generate the significant
 %node labels & node coordinates & connection matrix.
+%Usage:[] = nbspostpro(subnet)
+%subnet presents the order of subnet.
 
 global nbs
 if ~exist('myconn','dir')
     mkdir myconn
 end
-adj = full(nbs.NBS.con_mat{1} + nbs.NBS.con_mat{1}');
+adj = full(nbs.NBS.con_mat{subnet} + nbs.NBS.con_mat{subnet}');
 adj_stat = nbs.NBS.test_stat;
 adj_sum_col = sum(adj,2);
 adj_sum_row = sum(adj,1);
@@ -25,7 +27,7 @@ coor_fid2 = fopen('myconn/nbs_coordinates.txt','w+');
 node_size_fid3 = fopen('myconn/node_size.txt','w+');
 fprintf(node_size_fid3,'%d\r\n',sum(adj,2));
 fclose(node_size_fid3);
-[lin_i lin_j] = find(nbs.NBS.con_mat{1});
+[lin_i lin_j] = find(nbs.NBS.con_mat{subnet});
 choosevec = zeros(90,1);
 for aa = 1:90
     if ismember(aa,unique([lin_i lin_j]));
@@ -43,7 +45,7 @@ fclose(coor_fid2);
 % [fname pname] = uigetfile('*.mat','Choose the aal_abbr.mat files...'); 
 % load([pname fname])
 load abbr_label.mat
-[ai,aj] = find(nbs.NBS.con_mat{1});
+[ai,aj] = find(nbs.NBS.con_mat{subnet});
 fid = fopen('myconn/lianjie.txt','w+');
 for aa = 1:numel(ai)
     i_lab = nbs.NBS.node_label{ai(aa)};

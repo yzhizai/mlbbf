@@ -6,11 +6,13 @@ snr_1_thr = sig_mat;
 load occult_sign
 snr_2_thr = sig_mat;
 
-snr_1_thr(snr_1_thr > 0.002) = -1;
-snr_1_thr  = snr_1_thr + 1;
+AA = zeros(size(snr_1_thr));
+AA(snr_1_thr < 0.05) = 1;
+snr_1_thr  = AA;
 
-snr_2_thr(snr_2_thr > 0.002) = -1;
-snr_2_thr  = snr_2_thr + 1;
+BB = zeros(size(snr_2_thr));
+BB(snr_2_thr < 0.05) = 1;
+snr_2_thr  = BB;
 figure(1)
 imshow(logical(snr_1_thr))
 figure(2)
