@@ -47,13 +47,18 @@ fclose(coor_fid2);
 load abbr_label.mat
 [ai,aj] = find(nbs.NBS.con_mat{subnet});
 fid = fopen('myconn/lianjie.txt','w+');
+ind_upper = find(triu(ones(90),1) == 1);
 for aa = 1:numel(ai)
+    y = nbs.GLM.y(:,find(ind_upper == ((aj(aa)-1)*90 + ai(aa))))
+    num_cell = sum(nbs.GLM.X); %get the control number
+    y1 = y(1:num_cell(1));
+    y2 = y((num_cell(1) + 1):end);
     i_lab = nbs.NBS.node_label{ai(aa)};
     j_lab = nbs.NBS.node_label{aj(aa)};
     abbr_i_lab = abbr_cell{ai(aa)};
     abbr_j_lab = abbr_cell{aj(aa)};
-    fprintf(fid,'%20s <---> %-20s     %10s <---> %s \r\n',i_lab,j_lab,abbr_i_lab(1:end -2),abbr_j_lab(1:end - 2));
-    str_disp = sprintf('%20s <---> %-20s     %10s <---> %s \r\n',i_lab,j_lab,abbr_i_lab(1:end -2),abbr_j_lab(1:end - 2));
+    fprintf(fid,'%20s <---> %-20s     %10s <---> %s   %f\t%f\t%f\t%f\r\n',i_lab,j_lab,abbr_i_lab(1:end -2),abbr_j_lab(1:end - 2),mean(y1),std(y1),mean(y2),std(y2));
+%     str_disp = sprintf('%20s <---> %-20s     %10s <---> %s \r\n',i_lab,j_lab,abbr_i_lab(1:end -2),abbr_j_lab(1:end - 2));
 end
 fclose(fid);
 
